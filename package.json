@@ -1,0 +1,26 @@
+{
+  "name": "inverted-index",
+  "version": "1.0.0",
+  "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-moseni/inverted-index.git"
+  },
+  "keywords": [
+    "index",
+    "inverted",
+    "index",
+    "json",
+    "file"
+  ],
+  "author": "Halimat Mercy Oseni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-moseni/inverted-index/issues"
+  },
+  "homepage": "https://github.com/andela-moseni/inverted-index#readme"
+}
