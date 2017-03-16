@@ -1,0 +1,56 @@
+body {
+  padding-top: 70px;
+  background: #fffff0;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+h4 {
+  color: black;
+  font-weight: : bold;
+}
+
+#main{
+  color: white;
+  font-size: 30px;
+}
+
+.navbar {
+  background: black;
+}
+
+#aboutnav {
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  margin-left: 850px;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+
+footer {
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  color: white;
+  text-align: left;
+  font-family: Georgia;
+  background-color: black;
+  margin-top: 139px;
+}
