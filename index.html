@@ -76,19 +76,19 @@
           <table class="table table-striped" ng-show="showTable">
             <div class="row" ng-show="tableTitle">
               <div class="col-md-12">
-                <h4>{{ name }} </h4>
+                <h2>Inverted Index Table for {{ name }} </h2>
               </div>
             </div>
             <thead>
               <tr>
                 <th>Words</th>
-                <th ng-repeat="items in range(indexed.length)">File {{ items + 1 }}</th>
+                <th ng-repeat="items in range(filesCount[name])">Document {{ items + 1 }}</th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="(key, values) in index">
                 <td>{{ key }}</td> 
-                <td ng-repeat="number in values"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                <td ng-repeat="number in range(filesCount[name])"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
                 </td>
               </tr>
             </tbody>
