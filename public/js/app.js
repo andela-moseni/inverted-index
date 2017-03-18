@@ -5,7 +5,7 @@ let fileContent = {};
 // file controller 
 indexed.controller('fileController', ($scope, toastr) => {
 	$scope.fileContent = {};
-	$scope.filesCount = {};
+	$scope.docsCount = {};
 	$scope.uploadedFiles = [];
 	$scope.indexed = {};
 	$scope.indexedFiles = null;
@@ -37,7 +37,7 @@ indexed.controller('fileController', ($scope, toastr) => {
               if (validFile) {
               	$scope.fileContent[file.name] = fileContent;
               	$scope.fileNames.push(file.name);
-              	$scope.filesCount[file.name] = Object.keys(fileContent).length;
+              	$scope.docsCount[file.name] = Object.keys(fileContent).length;
               	toastr.success(file.name + ' has been uploaded', 'Successful file upload');
               } else {
               	throw new Error('error');
@@ -79,4 +79,29 @@ indexed.controller('fileController', ($scope, toastr) => {
   	}
 	   return count;
 	  };
+	$scope.searchIndex = () => {
+		const searched = document.getElementById('searched').value;
+		$scope.searched = searched;
+		let query = document.getElementById('searchBox').value;
+		if (query === '') {
+      toastr.error('Enter word(s) to search!', 'No Search Parameter');
+      $scope.showTable = false;
+      $scope.tableTitle = false;
+      return false;
+    }
+    if (searched === 'Select a file to search') {
+    	toastr.error('Select a valid file to search', 'No file selected');
+    	$scope.showTable = false;
+      $scope.tableTitle = false;
+    } else if (searched === 'All files') {
+    	$scope.mySearch = invertedIndex.searchIndex(query, searched);
+    } else {
+    	$scope.mySearch = invertedIndex.searchIndex(query, searched);
+    	$scope.showTable = false;
+    	$scope.tableTitle = false;
+    	return false;
+    }
+    	$scope.showTable = true;
+      $scope.tableTitle = true;
+	}
 });
