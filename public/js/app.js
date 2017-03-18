@@ -66,12 +66,17 @@ indexed.controller('fileController', ($scope, toastr) => {
       invertedIndex.createIndex(selectedFile, fileContent);
       const index = invertedIndex.getIndex(selectedFile);
       $scope.indexed[selectedFile] = index;
+      toastr.success('Inverted index created', 'Success');
       $scope.showTable = true;
       $scope.tableTitle = true;
       $scope.indexedFiles = invertedIndex.fileIndices;
     }
   };
   $scope.range = (value) => {
-	   return Object.keys(fileContent).length;
+  	let count = [];
+  	for (let i=0; i<value; i++){
+  		count.push(i);
+  	}
+	   return count;
 	  };
 });
