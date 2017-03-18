@@ -49,14 +49,15 @@
           <label for="file-input" class="btn btn-default btn-file btn-success">Upload
               <input type="file" id="file-input" multiple accept="application/json">
             </label>
-          <p class="help-block">Select a file to upload.</p>
+          <p class="help-block" id="selectFile">Select a file to upload.</p>
         </div>
         <div>
-          <select class="form-control" id="selected">
-              <option>Select a file to create index</option>
+          <select class="form-control" id="selectedFile">
+              <option>--Select a file to create index--</option>
+              <option ng-repeat="name in fileNames">{{ name }}</option>
             </select>
         </div><br>
-        <button class="btn btn-success" onClick="">Create Index</button>
+        <button class="btn btn-success" ng-click="createIndex()">Create Index</button>
       </div>
       <div class="col-lg-7">
         <form class="navbar-form navbar-left" role="search">
@@ -71,21 +72,24 @@
             <button type="submit" class="btn btn-success" onClick="">Search</button>
         </form>
         </div>
-        <div>
-          <table class="table table-striped">
-            <div class="row">
+        <div ng-repeat="(name, index) in indexed">
+          <table class="table table-striped" ng-show="showTable">
+            <div class="row" ng-show="tableTitle">
               <div class="col-md-12">
+                <h4>{{ name }} </h4>
               </div>
             </div>
             <thead>
               <tr>
                 <th>Words</th>
+                <th ng-repeat="items in range(indexed.length)">File {{ items + 1 }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
+              <tr ng-repeat="(key, values) in index">
+                <td>{{ key }}</td> 
+                <td ng-repeat="number in values"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -93,12 +97,8 @@
       </div>
     </div>
   </div>
-  <footer id="fh5co-footer" role="contentinfo">
-    <div class="container">
-      <div class="row">
-        <p class="fh5co-copyright">(c) 2017 <a href="#">Home</a>.All Rights Reserved.<br></p>
-      </div>
-    </div>
+  <footer>
+    <p>(c) 2017 <a href="#">Home</a>.All Rights Reserved.<br></p>
   </footer>
   <!-- scripts are loaded here -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
