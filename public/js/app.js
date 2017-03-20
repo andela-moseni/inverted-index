@@ -11,6 +11,7 @@ indexed.controller('fileController', ($scope, toastr) => {
 	$scope.indexedFiles = null;
 	$scope.showTable = false;
 	$scope.showSearch = false;
+	$scope.showResultTable = false;
 	$scope.fileNames = [];
 	$scope.tableTitle = false;
   $scope.selected = null;
@@ -58,7 +59,7 @@ indexed.controller('fileController', ($scope, toastr) => {
     const selectedFile = document.getElementById('selectedFile').value;
     $scope.selectedFile = selectedFile;
     if (selectedFile === '--Select a file to create index--') {
-      toastr.error('Upload / Select a file', 'No file Selected');
+      toastr.error('Upload and select a file', 'No file Selected');
       return false;
     }
     if (selectedFile) {
@@ -69,6 +70,7 @@ indexed.controller('fileController', ($scope, toastr) => {
       toastr.success('Inverted index created', 'Success');
       $scope.showTable = true;
       $scope.tableTitle = true;
+      $scope.showResultTable = false;
       $scope.indexedFiles = invertedIndex.fileIndices;
     }
   };
@@ -80,26 +82,31 @@ indexed.controller('fileController', ($scope, toastr) => {
 	   return count;
 	  };
 	$scope.searchIndex = () => {
-		const searched = document.getElementById('searched').value;
-		$scope.searched = searched;
+		const searchFile = document.getElementById('searchFile').value;
+		$scope.searchFile = searchFile;
 		let query = document.getElementById('searchBox').value;
-		if (query === '') {
+		if (searchFile === 'Select a file to search' && (query === '' || query === undefined)) {
+    	toastr.error('Select a file and enter word(s) to search.', 'No file selected / search parameter ');
+    } else if (searchFile === 'Select a file to search') {
+    	toastr.error('Select a valid file to search', 'No file selected');
+    	$scope.showTable = false;
+      $scope.tableTitle = false;
+    } else if (query === '' || query === undefined) {
       toastr.error('Enter word(s) to search!', 'No Search Parameter');
       $scope.showTable = false;
       $scope.tableTitle = false;
       return false;
     }
-    if (searched === 'Select a file to search') {
-    	toastr.error('Select a valid file to search', 'No file selected');
-    	$scope.showTable = false;
-      $scope.tableTitle = false;
-    } else if (searched === 'All files') {
-    	$scope.mySearch = invertedIndex.searchIndex(query, searched);
-    } else {
-    	$scope.mySearch = invertedIndex.searchIndex(query, searched);
+    //  else if (searchFile === 'All files') {
+    // 	$scope.mySearch = invertedIndex.searchIndex(query, searchFile);
+    // } 
+    else {
+    	$scope.mySearch = invertedIndex.searchIndex(query, searchFile);
+    	console.log($scope.mySearch);
     	$scope.showTable = false;
     	$scope.tableTitle = false;
-    	return false;
+    	$scope.showResultTable = true;
+    	return;
     }
     	$scope.showTable = true;
       $scope.tableTitle = true;

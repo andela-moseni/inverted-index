@@ -114,7 +114,6 @@ describe('invertedIndex Index', () => {
     });
   });
 });
-
 },{"./allBooks/books.json":1,"./allBooks/invalid.json":2,"./allBooks/newBook.json":3,"object.values":29}],5:[function(require,module,exports){
 'use strict';
 

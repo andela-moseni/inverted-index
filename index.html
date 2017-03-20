@@ -33,36 +33,36 @@
           <ul>
             <li>Creating an Index</li>
             <ol>
-              <li>Upload your JSON file</l1>
-                <li>Select a file to create it's index</li>
-                <li>Click 'create index' button</li>
+              <li>Upload your JSON file</li>
+              <li>Select a file to create it's index</li>
+              <li>Click 'create index' button</li>
             </ol>
             <li>Searching an Index</li>
             <ol>
-              <li>Select a file whose Index has been created already</l1>
-                <li>Enter your search word(s)</li>
-                <li>Click on the 'search' button</li>
+              <li>Select a file whose Index has been created already</li>
+              <li>Enter your search word(s)</li>
+              <li>Click on the 'search' button</li>
             </ol>
           </ul>
         </div><br>
         <div class="form-group">
           <label for="file-input" class="btn btn-default btn-file btn-success">Upload
-              <input type="file" id="file-input" multiple accept="application/json">
-            </label>
+            <input type="file" id="file-input" multiple accept="application/json">
+          </label>
           <p class="help-block" id="selectFile">Select a file to upload.</p>
         </div>
         <div>
           <select class="form-control" id="selectedFile">
-              <option>--Select a file to create index--</option>
-              <option ng-repeat="name in fileNames">{{ name }}</option>
-            </select>
+            <option>--Select a file to create index--</option>
+            <option ng-repeat="name in fileNames">{{ name }}</option>
+          </select>
         </div><br>
         <button class="btn btn-success" ng-click="createIndex()">Create Index</button>
       </div>
       <div class="col-lg-7">
         <form class="navbar-form navbar-left" role="search">
           <div>
-            <select class="form-control" id="searched">
+            <select class="form-control" id="searchFile">
               <option>Select a file to search</option>
               <option ng-repeat="(key, value) in indexedFiles">{{ key }}</option>
               <option>All files</option>
@@ -71,8 +71,9 @@
               <input type="text" class="form-control" placeholder="Search Word" id="searchBox">
             </div>
             <button type="submit" class="btn btn-success" ng-click=searchIndex()>Search</button>
+          </div>
         </form>
-        </div>
+      </div>
         <div ng-repeat="(name, index) in indexed">
           <table class="table table-striped" ng-show="showTable">
             <div class="row" ng-show="tableTitle">
@@ -89,34 +90,37 @@
             <tbody>
               <tr ng-repeat="(key, values) in index">
                 <td>{{ key }}</td> 
-                <td ng-repeat="number in range(docsCount[name])"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                <td ng-repeat="number in range(docsCount[name])"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span><span ng-if="values.includes(number) === false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="row" ng-show="showResultTable">
           <table class="table table-striped">
             <div class="row">
               <div class="col-md-12">
-                <h2>Search result in {{ name }}</h2>
+                <h2>Search result in {{ searchFile }}</h2>
               </div>
             </div>
             <thead>
               <tr>
                 <th>Words</th>
-                <th ng-repeat="i in range(docsCount[name])">Document {{ i + 1 }}</th>
+                <th ng-repeat="i in range(docsCount[searchFile])">Document {{ i + 1 }}</th>
               </tr>
             </thead>
             <tbody>  
               <tr ng-repeat="(key, values) in mySearch">
               <td>{{ key }}</td>
-              <td ng-repeat="number in range(docsCount[name])"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+              <td ng-repeat="number in range(docsCount[searchFile])"><span ng-if="values.includes(number)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span></span><span ng-if="values.includes(number) === false"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
               </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>
   </div>
+
   <footer>
     <p>(c) 2017 <a href="#">Home</a>.All Rights Reserved.<br></p>
   </footer>

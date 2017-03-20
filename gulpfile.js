@@ -26,4 +26,5 @@ gulp.task('default', ['browserSync'], function() {
     gulp.watch('public/js/*.js', browserSync.reload);
     gulp.watch('*.html', browserSync.reload);
     gulp.watch('src/*.js', browserSync.reload);
+    gulp.watch('jasmine/spec/allBooks/*.json', browserSync.reload);
 });

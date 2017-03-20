@@ -96,7 +96,11 @@ class InvertedIndex {
       /**
       * TODO Search multiple files
       */
-      return console.log('bababab');
+      if (Object.keys(searchResult).length >= 1) {
+        return searchResult;
+      }
+
+      return console.log('Testing all files');
     } else {
       searchTerm.forEach((term) => {
         if(index[term]){
