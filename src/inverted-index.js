@@ -85,23 +85,17 @@ class InvertedIndex {
    * @return {Object} Displays table of search result
   **/
   searchIndex(searchTerm, filename) {
-    const searchResult = {};
+    let searchResult = {};
+    this.searchIndices = {};
     if(typeof searchTerm !== 'string') {
       return false;
     }
     searchTerm = this.tokenize(searchTerm);
-    const index = this.fileIndices[filename];
+    let index;
 
-    if (filename == 'All files') {
-      /**
-      * TODO Search multiple files
-      */
-      if (Object.keys(searchResult).length >= 1) {
-        return searchResult;
-      }
-
-      return console.log('Testing all files');
-    } else {
+    if (filename !== 'All files') {
+      // Search single file with filename
+      index = this.fileIndices[filename];
       searchTerm.forEach((term) => {
         if(index[term]){
           searchResult[term] = index[term];
@@ -109,7 +103,19 @@ class InvertedIndex {
       });
       this.searchIndices[filename] = searchResult;
       console.log(this.searchIndices[filename]);
-      return this.searchIndices[filename];
-    }
+      return this.searchIndices;
+    } 
+    // Search all files
+    Object.keys(this.fileIndices).forEach((file) => {
+      searchResult = {};
+      index = this.fileIndices[file];
+      searchTerm.forEach((term) => {
+        if(index[term]){
+          searchResult[term] = index[term];
+        }
+      });
+      this.searchIndices[file] = searchResult;
+    });
+    return this.searchIndices;
   }
 }

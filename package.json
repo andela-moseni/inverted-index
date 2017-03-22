@@ -24,9 +24,8 @@
   },
   "homepage": "https://github.com/andela-moseni/inverted-index#readme",
   "devDependencies": {
-    "eslint": "^3.17.1",
+    "eslint": "^3.18.0",
     "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-uglify": "^2.1.0",

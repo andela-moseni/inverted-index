@@ -85,6 +85,7 @@ indexed.controller('fileController', ($scope, toastr) => {
 		const searchFile = document.getElementById('searchFile').value;
 		$scope.searchFile = searchFile;
 		let query = document.getElementById('searchBox').value;
+		$scope.query = query;
 		if (searchFile === 'Select a file to search' && (query === '' || query === undefined)) {
     	toastr.error('Select a file and enter word(s) to search.', 'No file selected / search parameter ');
     } else if (searchFile === 'Select a file to search') {
@@ -97,9 +98,6 @@ indexed.controller('fileController', ($scope, toastr) => {
       $scope.tableTitle = false;
       return false;
     }
-    //  else if (searchFile === 'All files') {
-    // 	$scope.mySearch = invertedIndex.searchIndex(query, searchFile);
-    // } 
     else {
     	$scope.mySearch = invertedIndex.searchIndex(query, searchFile);
     	console.log($scope.mySearch);

@@ -1,6 +1,8 @@
 body {
   padding-top: 70px;
   background: #fffff0;
+  font-family: roboto;
+  /*font-size: 20px;*/
 }
 
 .btn-file {
@@ -13,6 +15,11 @@ h4 {
   font-weight: : bold;
 }
 
+#display {
+  color: black;
+  font-weight: : bold;
+}
+
 #main{
   color: white;
   font-size: 30px;
@@ -20,13 +27,8 @@ h4 {
 
 .navbar {
   background: black;
-}
+  font-family: lobster;
 
-#aboutnav {
-  color: white;
-  font-size: 25px;
-  position: absolute;
-  margin-left: 850px;
 }
 
 .btn-file input[type=file] {
@@ -44,13 +46,20 @@ h4 {
     display: block;
 }
 
+.content {
+  font-size: 15px;
+}
+
 footer {
-  height: 30px;
+  display: block;
+  height: 50px;
   width: 100%;
   font-size: 15px;
   color: white;
   text-align: left;
-  font-family: Georgia;
+  font-family: lobster;
   background-color: black;
-  margin-top: 139px;
+  position: fixed;
+  bottom: 0;
+  /*padding-bottom: 10px;*/
 }
