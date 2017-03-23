@@ -6,7 +6,7 @@ module.exports=[
   },
 
   {
-    "title": "The Lord of the Rings: The Fellowship of the Ring.",
+    "title": "The Lord of the Rings: The Fellowship the Ring.",
     "text": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
   },
   {
@@ -30,8 +30,8 @@ module.exports=[
 },{}],3:[function(require,module,exports){
 module.exports=[
   {
-    "title": "I and You",
-    "text": "Hello dearie! How's it going?"
+    "title": "I and You love",
+    "text": "Hello dearie! How's it going love?"
   },
   {
     "title": "Cindy and Barbie",
@@ -66,6 +66,14 @@ describe('invertedIndex Index', () => {
     it('should check that the class has a getIndex method', () => {
       expect(typeof invertedIndex.getIndex).toBe('function');
     });
+
+    it('should check that the class has a searchIndex method', () => {
+      expect(typeof invertedIndex.searchIndex).toBe('function');
+    });
+
+    it('should check that the class has a setIndex method', () => {
+      expect(typeof invertedIndex.setIndex).toBe('function');
+    });
   });
 
   describe('validateFile should check files', () => {
@@ -86,6 +94,15 @@ describe('invertedIndex Index', () => {
     });
   });
 
+  describe('Tokenize words', () => {
+    it('should check that tokens are splitted and in sorted order', () => {
+      let words = "Hello Dear how are YOU";
+      let expectedTokens = ['are', 'dear', 'hello', 'how', 'you'];
+      words = invertedIndex.tokenize(words);
+      expect(expectedTokens).toEqual(words);
+    });
+  });
+
   describe('Generate Index', () => {
     it('should verify that index has been created', () => {
       expect(Object.keys(invertedIndex.getIndex('book.json')).length).toBeGreaterThan(0);
@@ -103,7 +120,7 @@ describe('invertedIndex Index', () => {
         how: [ 0 ],
         i: [ 0, 1 ],
         it: [ 0 ],
-        love: [ 1 ],
+        love: [ 0, 1 ],
         s: [ 0 ],
         you: [ 0 ]
       };
@@ -113,6 +130,25 @@ describe('invertedIndex Index', () => {
       expect(values(result)).toEqual(values(expectedIndex));
     });
   });
+
+  describe('Search index', () => {
+    it('should search through single files that are indexed', () => {
+      const expectedResult = { 
+        'secondBook.json': 
+        { 
+          barbie: [ 1 ], 
+          and: [ 0, 1 ], 
+          cindarella: [ 1 ], 
+          dearie: [ 0 ]
+        }
+      }
+      let search = {};
+      search = invertedIndex.searchIndex('barbie, mercy and cindarella dearie', 'secondBook.json');
+      expect(Object.keys(search)).toEqual(Object.keys(expectedResult));
+      expect(values(expectedResult)).toEqual(values(expectedResult));
+    })
+  })
+
 });
 },{"./allBooks/books.json":1,"./allBooks/invalid.json":2,"./allBooks/newBook.json":3,"object.values":29}],5:[function(require,module,exports){
 'use strict';

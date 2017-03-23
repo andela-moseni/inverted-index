@@ -76,7 +76,12 @@ class InvertedIndex {
    * @return {Object} An object of each word and their indices in a sorted way
   **/
   getIndex(filename) {
-    return this.fileIndices[filename];
+    let newObj = {};
+    let tokens = Object.keys(this.fileIndices[filename]).sort();
+    tokens.forEach((token) => {
+      newObj[token] = this.fileIndices[filename][token];
+    });
+    return newObj;
   }
    /**
    * Search Index
@@ -87,7 +92,7 @@ class InvertedIndex {
   searchIndex(searchTerm, filename) {
     let searchResult = {};
     this.searchIndices = {};
-    if(typeof searchTerm !== 'string') {
+    if(typeof searchTerm !== 'string' || typeof searchTerm === undefined) {
       return false;
     }
     searchTerm = this.tokenize(searchTerm);
@@ -102,7 +107,6 @@ class InvertedIndex {
         }
       });
       this.searchIndices[filename] = searchResult;
-      console.log(this.searchIndices[filename]);
       return this.searchIndices;
     } 
     // Search all files

@@ -34,7 +34,9 @@
     "object.values": "^1.0.4"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "gulp": "^3.9.1",
-    "jasmine": "^2.5.3"
+    "jasmine": "^2.5.3",
+    "path": "^0.12.7"
   }
 }

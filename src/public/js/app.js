@@ -1,21 +1,21 @@
 const invertedIndex = new InvertedIndex();
 const indexed = angular.module('Indexed', ['toastr']);
-let fileContent = {};
+const fileContent = {};
 
-// file controller 
+// file controller
 indexed.controller('fileController', ($scope, toastr) => {
-	$scope.fileContent = {};
-	$scope.docsCount = {};
-	$scope.uploadedFiles = [];
-	$scope.indexed = {};
-	$scope.indexedFiles = null;
-	$scope.showTable = false;
-	$scope.showSearch = false;
-	$scope.showResultTable = false;
-	$scope.fileNames = [];
-	$scope.tableTitle = false;
+  $scope.fileContent = {};
+  $scope.docsCount = {};
+  $scope.uploadedFiles = [];
+  $scope.indexed = {};
+  $scope.indexedFiles = null;
+  $scope.showTable = false;
+  $scope.showSearch = false;
+  $scope.showResultTable = false;
+  $scope.fileNames = [];
+  $scope.fileTitles = {};
+  $scope.tableTitle = false;
   $scope.selected = null;
-
   /**
    * Reads content of uploaded files
    * Uploads valid  file and throw error for invalid file
@@ -39,19 +39,18 @@ indexed.controller('fileController', ($scope, toastr) => {
               	$scope.fileContent[file.name] = fileContent;
               	$scope.fileNames.push(file.name);
               	$scope.docsCount[file.name] = Object.keys(fileContent).length;
-              	toastr.success(file.name + ' has been uploaded', 'Successful file upload');
+              	toastr.success(`${file.name} has been uploaded`, 'Successful file upload');
               } else {
               	throw new Error('error');
               }
-     				}
-            catch (err) {
+     				} catch (err) {
             	toastr.error('Upload a valid JSON file', 'Invalid JSON File');
-            } 
+            }
           });
         };
-      reader.readAsText(file);
+        reader.readAsText(file);
+      });
     });
-  });
  	/**
 		* creates index for uploaded file
  	**/
@@ -60,13 +59,19 @@ indexed.controller('fileController', ($scope, toastr) => {
     $scope.selectedFile = selectedFile;
     if (selectedFile === '--Select a file to create index--') {
       toastr.error('Upload and select a file', 'No file Selected');
-      return false;
+      return;
     }
     if (selectedFile) {
       const fileContent = $scope.fileContent[selectedFile];
       invertedIndex.createIndex(selectedFile, fileContent);
       const index = invertedIndex.getIndex(selectedFile);
       $scope.indexed[selectedFile] = index;
+      const titles = [];
+      Object.keys(fileContent).forEach((content) => {
+        titles.push(fileContent[content].title);
+      });
+      $scope.fileTitles[selectedFile] = titles;
+      console.log($scope.fileTitles);
       toastr.success('Inverted index created', 'Success');
       $scope.showTable = true;
       $scope.tableTitle = true;
@@ -75,38 +80,44 @@ indexed.controller('fileController', ($scope, toastr) => {
     }
   };
   $scope.range = (value) => {
-  	let count = [];
-  	for (let i=0; i<value; i++){
-  		count.push(i);
-  	}
-	   return count;
-	  };
-	$scope.searchIndex = () => {
-		const searchFile = document.getElementById('searchFile').value;
-		$scope.searchFile = searchFile;
-		let query = document.getElementById('searchBox').value;
-		$scope.query = query;
-		if (searchFile === 'Select a file to search' && (query === '' || query === undefined)) {
-    	toastr.error('Select a file and enter word(s) to search.', 'No file selected / search parameter ');
+    const count = [];
+    for (let i = 0; i < value; i++) {
+      count.push(i);
+    }
+    return count;
+  };
+  $scope.searchIndex = () => {
+    if (!$scope.indexedFiles) {
+      toastr.error('Create an index, then search');
+      return;
+    }
+    const searchFile = document.getElementById('searchFile').value;
+    $scope.searchFile = searchFile;
+    const query = document.getElementById('searchBox').value;
+    $scope.query = query;
+    if (searchFile === 'Select a file to search' && (query === '' || query === undefined)) {
+      toastr.error('Select a file and enter word(s) to search.', 'No file selected / search parameter ');
     } else if (searchFile === 'Select a file to search') {
-    	toastr.error('Select a valid file to search', 'No file selected');
-    	$scope.showTable = false;
+      toastr.error('Select a valid file to search', 'No file selected');
+      $scope.showTable = false;
+    } else if (query.trim().length === 0) {
+      toastr.error('Enter a valid search term', 'Invalid search term');
+      $scope.showResultTable = false;
       $scope.tableTitle = false;
+      return;
     } else if (query === '' || query === undefined) {
       toastr.error('Enter word(s) to search!', 'No Search Parameter');
       $scope.showTable = false;
       $scope.tableTitle = false;
       return false;
+    } else {
+      $scope.mySearch = invertedIndex.searchIndex(query, searchFile);
+      $scope.showTable = false;
+      $scope.tableTitle = false;
+      $scope.showResultTable = true;
+      return;
     }
-    else {
-    	$scope.mySearch = invertedIndex.searchIndex(query, searchFile);
-    	console.log($scope.mySearch);
-    	$scope.showTable = false;
-    	$scope.tableTitle = false;
-    	$scope.showResultTable = true;
-    	return;
-    }
-    	$scope.showTable = true;
-      $scope.tableTitle = true;
-	}
+    $scope.showTable = true;
+    $scope.tableTitle = true;
+  };
 });

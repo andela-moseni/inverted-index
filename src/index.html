@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-  <link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='//fonts.googleapis.com/css?family=Prociono' rel='stylesheet'>
+  <link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
   <link rel="stylesheet" href="public/css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
   <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css">
+  <link rel="shortcut icon" href="public/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
   <title>Inverted Index</title>
 </head>
 <body ng-app="Indexed">
@@ -23,34 +26,33 @@
   </nav>
   <div class="container content" ng-controller="fileController">
     <div class="row">
-      <div class="col-lg-6">
-        <h3><strong>Overview</strong></h3>
+      <div id="overview" class="col-lg-6">
+        <h2 id="mains"><strong>Overview</strong></h2>
         <p class="text-justify"><strong>An inverted index</strong> consists of a list of all the unique words that appear in any document, and for each word, a list of the documents in which it appears. Inverted index object takes a JSON array of text objects and creates an index from the array. The index allows a user to search for texts in the array that contain a specified collection of words.
         </p>
-        <h5>How It Works</h5>
         <ul>
-          <li>Creating an Index</li>
+          <li>How to create an Index</li>
           <ol>
-            <li>Upload your JSON file</li>
+            <li>Upload one or more JSON file(s)</li>
             <li>Select a file to create it's index</li>
-            <li>Click 'create index' button</li>
+            <li>Click 'Create Index' button</li>
           </ol>
-          <li>Searching an Index</li>
+          <li>How to search through file(s)</li>
           <ol>
-            <li>Select a file whose Index has been created already</li>
+            <li>Select a file to search</li>
             <li>Enter your search word(s)</li>
-            <li>Click on the 'search' button</li>
+            <li>Click on the 'Search' button</li>
           </ol>
         </ul>
       <br>
     </div>
-      <div class="col-md-6">
+      <div class="col-md-6" id="choice">
         <div class="form-group col-lg-12">
-          <h4 id="display" class="help-block" id="selectFile"> Select a file to upload
-          <label for="file-input" class="btn btn-default btn-file btn-success">Upload
+          <h3 id="display" class="help-block" id="selectFile"> Select a file to upload &nbsp &nbsp &nbsp &nbsp
+          <label for="file-input" class="btn btn-default btn-file btn-success">Upload File
             <input type="file" id="file-input" multiple accept="application/json">
           </label>
-          </h4>
+          </h3>
         </div>
         <div class="col-md-6">
           <select class="form-control form-group" id="selectedFile">
@@ -78,13 +80,13 @@
       <table class="table table-striped" ng-show="showTable">
         <div class="row" ng-show="tableTitle">
           <div class="col-md-12">
-            <h2>Inverted Index Table for {{ name }} </h2>
+            <h2><strong>:::::&nbsp;Inverted Index Table for {{ name }}&nbsp;:::::</strong></h2><br>
           </div>
         </div>
         <thead>
           <tr>
             <th>Tokens</th>
-            <th ng-repeat="items in range(docsCount[name])">Document {{ items + 1 }}</th>
+            <th ng-repeat="fileTitle in fileTitles[name]">{{ fileTitle }}</th>
           </tr>
         </thead>
         <tbody>
@@ -100,13 +102,13 @@
       <table class="table table-striped">
         <div class="row">
           <div class="col-md-12">
-            <h2>Search result for "{{ query }}" in {{ name }}</h2>
+            <h2><strong>:::::&nbsp;Search result for "{{ query }}" in {{ name }}&nbsp;:::::</strong></h2><br>
           </div>
         </div>
         <thead>
           <tr>
             <th>Tokens</th>
-            <th ng-repeat="i in range(docsCount[name])">Document {{ i + 1 }}</th>
+            <th ng-repeat="fileTitle in fileTitles[name]">{{ fileTitle }}</th>
           </tr>
         </thead>
         <tbody>  
@@ -118,17 +120,20 @@
         </tbody>
       </table>
     </div>
-    <br />
-    <br />
+    <br/>
+    <br/>
+    </br>
+    </br>
+    </br>
   </div>
   <!-- scripts are loaded here -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="src/inverted-index.js"></script>
+  <script type="text/javascript" src="inverted-index.js"></script>
   <script type="text/javascript" src="public/js/app.js"></script>
 
   <footer>
-    <p>(c) 2017 <a href="#">Home</a>.All Rights Reserved.<br></p>
+    <p>(c) 2017 <a href="#"> &nbsp;&nbsp; Home &nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;All Rights Reserved</p>
   </footer>
 </body>
 </html>
