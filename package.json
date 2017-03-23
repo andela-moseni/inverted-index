@@ -43,6 +43,10 @@
     "gulp": "^3.9.1",
     "jasmine": "^2.5.3",
     "karma": "^1.5.0",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
+    "karma-spec-reporter": "0.0.30",
+    "karma-verbose-reporter": "0.0.6",
     "path": "^0.12.7"
   }
 }
