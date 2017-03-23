@@ -4,7 +4,7 @@
   "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -31,12 +31,18 @@
     "gulp-uglify": "^2.1.0",
     "gulp-util": "^3.0.8",
     "jasmine": "^2.5.3",
+    "jasmine-core": "^2.5.2",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
     "object.values": "^1.0.4"
   },
   "dependencies": {
     "express": "^4.15.2",
     "gulp": "^3.9.1",
     "jasmine": "^2.5.3",
+    "karma": "^1.5.0",
     "path": "^0.12.7"
   }
 }
