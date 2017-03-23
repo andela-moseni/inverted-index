@@ -1,5 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/andela-moseni/inverted-index/badge.svg?branch=development)](https://coveralls.io/github/andela-moseni/inverted-index?branch=development)
-[![Travis Status](https://travis-ci.org/andela-moseni/inverted-index.svg?branch=development](https://travis-ci.org/andela-moseni/inverted-index.svg?branch=development)
+[![Travis Status](https://travis-ci.org/andela-moseni/inverted-index.svg?branch=development)](https://travis-ci.org/andela-moseni/inverted-index.svg?branch=development)
 
 # Inverted Index
 ## Introduction
@@ -24,13 +24,21 @@ The project implements Elasticsearch also known as Inverted Index which is known
   - How to run tests
     * Run `npm test` 
 
-## How to use the app
+### How to use the app
 When the app has started: 
 * Click on `Upload File` to upload valid JSON file(s)
 * Upon successful upload, click on the `Create Index` button 
 * Scroll down the page to see the created Index displayed in a tabular format
 * Choose a file to search through a file or `All files` to search through all files, input search words and click on the `Search` button
 * Scroll down to see the search result
+
+### Technology stack
+* Node JS
+* ES6
+* AngularJS
+* Gulp
+* Karma 
+* Jasmine
 
 ### Limitations of the project
 The application can only upload JSON files in a specific format. 
