@@ -26,6 +26,7 @@
   </nav>
   <div class="container content" ng-controller="fileController">
     <div class="row">
+      <!--overview of inverted-index-->
       <div id="overview" class="col-lg-6">
         <h2 id="mains"><strong>Overview</strong></h2>
         <p class="text-justify"><strong>An inverted index</strong> consists of a list of all the unique words that appear in any document, and for each word, a list of the documents in which it appears. Inverted index object takes a JSON array of text objects and creates an index from the array. The index allows a user to search for texts in the array that contain a specified collection of words.
@@ -46,6 +47,7 @@
         </ul>
       <br>
     </div>
+    <!--upload valid JSON file(s)-->
       <div class="col-md-6" id="choice">
         <div class="form-group col-lg-12">
           <h3 id="display" class="help-block" id="selectFile"> Select a file to upload &nbsp &nbsp &nbsp &nbsp
@@ -54,6 +56,7 @@
           </label>
           </h3>
         </div>
+        <!--create an index for uploaded files-->
         <div class="col-md-6">
           <select class="form-control form-group" id="selectedFile">
             <option>--Select a file to create index--</option>
@@ -76,6 +79,7 @@
         </div>
       </div>
     </div>
+    <!--inverted-index table -->
     <div ng-repeat="(name, index) in indexed">
       <table class="table table-striped" ng-show="showTable">
         <div class="row" ng-show="tableTitle">
@@ -98,6 +102,7 @@
         </tbody>
       </table>
     </div>
+    <!--search result table-->
     <div class="row" ng-show="showResultTable" ng-repeat="(name, index) in mySearch">
       <table class="table table-striped">
         <div class="row">
@@ -131,7 +136,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="inverted-index.js"></script>
   <script type="text/javascript" src="public/js/app.js"></script>
-
   <footer>
     <p>(c) 2017 <a href="#"> &nbsp;&nbsp; Home &nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;All Rights Reserved</p>
   </footer>
