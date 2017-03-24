@@ -36,8 +36,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "object.values": "^1.0.4"
+    "karma-phantomjs-launcher": "^1.0.4"
   },
   "dependencies": {
     "express": "^4.15.2",
@@ -48,6 +47,7 @@
     "karma-coveralls": "^1.1.2",
     "karma-spec-reporter": "0.0.30",
     "karma-verbose-reporter": "0.0.6",
+    "object.values": "^1.0.4",
     "path": "^0.12.7"
   }
 }

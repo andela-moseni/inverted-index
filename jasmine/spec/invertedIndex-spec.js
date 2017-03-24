@@ -1,15 +1,20 @@
-const values = require('object.values');
+/* eslint-disable no-undef */
 
-const book = require('./allBooks/books.json');
+const values = require('object.values');  //  shim Object.values
+const book = require('./allBooks/books.json');  //  book with valid contents
+//  book with invalid content
 const invalidTitleAndText = require('./allBooks/invalid.json');
+//  book with valid content
 const secondBook = require('./allBooks/newBook.json');
+//  empty book
+const emptyBook = require('./allBooks/empty.json');
 
 describe('invertedIndex Index', () => {
   const invertedIndex = new InvertedIndex();
   invertedIndex.createIndex('book.json', book);
   invertedIndex.createIndex('secondBook.json', secondBook);
 
-  describe('invertedIndex Index class, check all methods', () => {
+  describe('InvertedIndex class, check all methods', () => {
     it('should check that the class has a createIndex method', () => {
       expect(typeof invertedIndex.createIndex).toBe('function');
     });
@@ -36,27 +41,29 @@ describe('invertedIndex Index', () => {
   });
 
   describe('validateFile should check files', () => {
-    it('should check that the contents of the uploaded file is a valid json file', () => {
+    it('should check that the contents of the file to be uploaded is valid',
+    () => {
       expect(invertedIndex.validateFile(book)).toBeTruthy();
     });
 
     it('should return false for empty json files', () => {
-      expect(invertedIndex.validateFile([])).toBeFalsy();
+      expect(invertedIndex.validateFile(emptyBook)).toBeFalsy();
     });
 
     it('should return true if file has property "title" and "text" ', () => {
       expect(invertedIndex.validateFile(book)).toBeTruthy();
     });
 
-    it('should return false if file does not have property "title" and "text" ', () => {
-      expect(invertedIndex.validateFile(invalidTitleAndText)).toBeFalsy();
-    });
+    it('should return false if file does not have property "title" and "text"',
+     () => {
+       expect(invertedIndex.validateFile(invalidTitleAndText)).toBeFalsy();
+     });
   });
 
   describe('Tokenize words', () => {
     it('should check that tokens are splitted and in sorted order', () => {
-      let words = "Hello Dear how are YOU";
-      let expectedTokens = ['are', 'dear', 'hello', 'how', 'you'];
+      let words = 'Hello Dear how are YOU';
+      const expectedTokens = ['are', 'dear', 'hello', 'how', 'you'];
       words = invertedIndex.tokenize(words);
       expect(expectedTokens).toEqual(words);
     });
@@ -64,24 +71,26 @@ describe('invertedIndex Index', () => {
 
   describe('Generate Index', () => {
     it('should verify that index has been created', () => {
-      expect(Object.keys(invertedIndex.getIndex('book.json')).length).toBeGreaterThan(0);
+      expect(Object.keys(invertedIndex.getIndex('book.json')).length)
+      .toBeGreaterThan(0);
     });
 
-    it('should check that index maps the string to the correct objects in json array', () => {
+    it('should check that index maps the string to the correct objects in json'
+     + ' array', () => {
       const expectedIndex = {
-        and: [ 0, 1 ],
-        barbie: [ 1 ],
-        cindarella: [ 1 ],
-        cindy: [ 1 ],
-        dearie: [ 0 ],
-        going: [ 0 ],
-        hello: [ 0 ],
-        how: [ 0 ],
-        i: [ 0, 1 ],
-        it: [ 0 ],
-        love: [ 0, 1 ],
-        s: [ 0 ],
-        you: [ 0 ]
+        and: [0, 1],
+        barbie: [1],
+        cindarella: [1],
+        cindy: [1],
+        dearie: [0],
+        going: [0],
+        hello: [0],
+        how: [0],
+        i: [0, 1],
+        it: [0],
+        love: [0, 1],
+        s: [0],
+        you: [0]
       };
       let result = {};
       result = invertedIndex.getIndex('secondBook.json');
@@ -92,20 +101,20 @@ describe('invertedIndex Index', () => {
 
   describe('Search index', () => {
     it('should search through single files that are indexed', () => {
-      const expectedResult = { 
-        'secondBook.json': 
-        { 
-          barbie: [ 1 ], 
-          and: [ 0, 1 ], 
-          cindarella: [ 1 ], 
-          dearie: [ 0 ]
+      const expectedResult = {
+        'secondBook.json':
+        {
+          barbie: [1],
+          and: [0, 1],
+          cindarella: [1],
+          dearie: [0]
         }
-      }
+      };
       let search = {};
-      search = invertedIndex.searchIndex('barbie, mercy and cindarella dearie', 'secondBook.json');
+      search = invertedIndex.searchIndex('barbie, mercy and cindarella dearie',
+      'secondBook.json');
       expect(Object.keys(search)).toEqual(Object.keys(expectedResult));
       expect(values(expectedResult)).toEqual(values(expectedResult));
-    })
-  })
-
+    });
+  });
 });

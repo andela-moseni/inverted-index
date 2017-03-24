@@ -6,16 +6,22 @@ module.exports=[
   },
 
   {
-    "title": "The Lord of the Rings: The Fellowship the Ring.",
-    "text": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
-  },
-  {
     "title": "The Lord of the Rings: The Fellowship of the Ring.",
     "text": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
+  }, 
+  {
+    "title": "Hello Barbie",
+    "text": "I love cartoons"
   }
 ]
 
 },{}],2:[function(require,module,exports){
+module.exports=[
+{
+  
+}
+]
+},{}],3:[function(require,module,exports){
 module.exports=[
   {
     "titles": "My name is mercy",
@@ -27,7 +33,7 @@ module.exports=[
     "texts": "An unusual alliance of man, elf, dwarf, wizard and hobbit seek to destroy a powerful ring."
   }
 ]
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports=[
   {
     "title": "I and You love",
@@ -38,19 +44,24 @@ module.exports=[
     "text": "I love Cindarella and Barbie"
   }
 ]
-},{}],4:[function(require,module,exports){
-const values = require('object.values');
+},{}],5:[function(require,module,exports){
+/* eslint-disable no-undef */
 
-const book = require('./allBooks/books.json');
+const values = require('object.values');  //  shim Object.values
+const book = require('./allBooks/books.json');  //  book with valid contents
+//  book with invalid content
 const invalidTitleAndText = require('./allBooks/invalid.json');
+//  book with valid content
 const secondBook = require('./allBooks/newBook.json');
+//  empty book
+const emptyBook = require('./allBooks/empty.json');
 
 describe('invertedIndex Index', () => {
   const invertedIndex = new InvertedIndex();
   invertedIndex.createIndex('book.json', book);
   invertedIndex.createIndex('secondBook.json', secondBook);
 
-  describe('invertedIndex Index class, check all methods', () => {
+  describe('InvertedIndex class, check all methods', () => {
     it('should check that the class has a createIndex method', () => {
       expect(typeof invertedIndex.createIndex).toBe('function');
     });
@@ -77,27 +88,29 @@ describe('invertedIndex Index', () => {
   });
 
   describe('validateFile should check files', () => {
-    it('should check that the contents of the uploaded file is a valid json file', () => {
+    it('should check that the contents of the file to be uploaded is valid',
+    () => {
       expect(invertedIndex.validateFile(book)).toBeTruthy();
     });
 
     it('should return false for empty json files', () => {
-      expect(invertedIndex.validateFile([])).toBeFalsy();
+      expect(invertedIndex.validateFile(emptyBook)).toBeFalsy();
     });
 
     it('should return true if file has property "title" and "text" ', () => {
       expect(invertedIndex.validateFile(book)).toBeTruthy();
     });
 
-    it('should return false if file does not have property "title" and "text" ', () => {
-      expect(invertedIndex.validateFile(invalidTitleAndText)).toBeFalsy();
-    });
+    it('should return false if file does not have property "title" and "text"',
+     () => {
+       expect(invertedIndex.validateFile(invalidTitleAndText)).toBeFalsy();
+     });
   });
 
   describe('Tokenize words', () => {
     it('should check that tokens are splitted and in sorted order', () => {
-      let words = "Hello Dear how are YOU";
-      let expectedTokens = ['are', 'dear', 'hello', 'how', 'you'];
+      let words = 'Hello Dear how are YOU';
+      const expectedTokens = ['are', 'dear', 'hello', 'how', 'you'];
       words = invertedIndex.tokenize(words);
       expect(expectedTokens).toEqual(words);
     });
@@ -105,24 +118,26 @@ describe('invertedIndex Index', () => {
 
   describe('Generate Index', () => {
     it('should verify that index has been created', () => {
-      expect(Object.keys(invertedIndex.getIndex('book.json')).length).toBeGreaterThan(0);
+      expect(Object.keys(invertedIndex.getIndex('book.json')).length)
+      .toBeGreaterThan(0);
     });
 
-    it('should check that index maps the string to the correct objects in json array', () => {
+    it('should check that index maps the string to the correct objects in json'
+     + ' array', () => {
       const expectedIndex = {
-        and: [ 0, 1 ],
-        barbie: [ 1 ],
-        cindarella: [ 1 ],
-        cindy: [ 1 ],
-        dearie: [ 0 ],
-        going: [ 0 ],
-        hello: [ 0 ],
-        how: [ 0 ],
-        i: [ 0, 1 ],
-        it: [ 0 ],
-        love: [ 0, 1 ],
-        s: [ 0 ],
-        you: [ 0 ]
+        and: [0, 1],
+        barbie: [1],
+        cindarella: [1],
+        cindy: [1],
+        dearie: [0],
+        going: [0],
+        hello: [0],
+        how: [0],
+        i: [0, 1],
+        it: [0],
+        love: [0, 1],
+        s: [0],
+        you: [0]
       };
       let result = {};
       result = invertedIndex.getIndex('secondBook.json');
@@ -133,24 +148,25 @@ describe('invertedIndex Index', () => {
 
   describe('Search index', () => {
     it('should search through single files that are indexed', () => {
-      const expectedResult = { 
-        'secondBook.json': 
-        { 
-          barbie: [ 1 ], 
-          and: [ 0, 1 ], 
-          cindarella: [ 1 ], 
-          dearie: [ 0 ]
+      const expectedResult = {
+        'secondBook.json':
+        {
+          barbie: [1],
+          and: [0, 1],
+          cindarella: [1],
+          dearie: [0]
         }
-      }
+      };
       let search = {};
-      search = invertedIndex.searchIndex('barbie, mercy and cindarella dearie', 'secondBook.json');
+      search = invertedIndex.searchIndex('barbie, mercy and cindarella dearie',
+      'secondBook.json');
       expect(Object.keys(search)).toEqual(Object.keys(expectedResult));
       expect(values(expectedResult)).toEqual(values(expectedResult));
-    })
-  })
-
+    });
+  });
 });
-},{"./allBooks/books.json":1,"./allBooks/invalid.json":2,"./allBooks/newBook.json":3,"object.values":29}],5:[function(require,module,exports){
+
+},{"./allBooks/books.json":1,"./allBooks/empty.json":2,"./allBooks/invalid.json":3,"./allBooks/newBook.json":4,"object.values":30}],6:[function(require,module,exports){
 'use strict';
 
 var keys = require('object-keys');
@@ -208,7 +224,7 @@ defineProperties.supportsDescriptors = !!supportsDescriptors;
 
 module.exports = defineProperties;
 
-},{"foreach":20,"object-keys":6}],6:[function(require,module,exports){
+},{"foreach":21,"object-keys":7}],7:[function(require,module,exports){
 'use strict';
 
 // modified from https://github.com/es-shims/es5-shim
@@ -350,7 +366,7 @@ keysShim.shim = function shimObjectKeys() {
 
 module.exports = keysShim;
 
-},{"./isArguments":7}],7:[function(require,module,exports){
+},{"./isArguments":8}],8:[function(require,module,exports){
 'use strict';
 
 var toStr = Object.prototype.toString;
@@ -369,7 +385,7 @@ module.exports = function isArguments(value) {
 	return isArgs;
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 var $isNaN = require('./helpers/isNaN');
@@ -457,7 +473,7 @@ var ES5 = {
 
 module.exports = ES5;
 
-},{"./helpers/isFinite":12,"./helpers/isNaN":13,"./helpers/mod":15,"./helpers/sign":16,"es-to-primitive/es5":17,"is-callable":24}],9:[function(require,module,exports){
+},{"./helpers/isFinite":13,"./helpers/isNaN":14,"./helpers/mod":16,"./helpers/sign":17,"es-to-primitive/es5":18,"is-callable":25}],10:[function(require,module,exports){
 'use strict';
 
 var toStr = Object.prototype.toString;
@@ -791,7 +807,7 @@ delete ES6.CheckObjectCoercible; // renamed in ES6 to RequireObjectCoercible
 
 module.exports = ES6;
 
-},{"./es5":8,"./helpers/assign":11,"./helpers/isFinite":12,"./helpers/isNaN":13,"./helpers/isPrimitive":14,"./helpers/mod":15,"./helpers/sign":16,"es-to-primitive/es6":18,"function-bind":22,"is-regex":26}],10:[function(require,module,exports){
+},{"./es5":9,"./helpers/assign":12,"./helpers/isFinite":13,"./helpers/isNaN":14,"./helpers/isPrimitive":15,"./helpers/mod":16,"./helpers/sign":17,"es-to-primitive/es6":19,"function-bind":23,"is-regex":27}],11:[function(require,module,exports){
 'use strict';
 
 var ES6 = require('./es6');
@@ -809,7 +825,7 @@ var ES7 = assign(ES6, {
 
 module.exports = ES7;
 
-},{"./es6":9,"./helpers/assign":11}],11:[function(require,module,exports){
+},{"./es6":10,"./helpers/assign":12}],12:[function(require,module,exports){
 var has = Object.prototype.hasOwnProperty;
 module.exports = Object.assign || function assign(target, source) {
 	for (var key in source) {
@@ -820,33 +836,33 @@ module.exports = Object.assign || function assign(target, source) {
 	return target;
 };
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var $isNaN = Number.isNaN || function (a) { return a !== a; };
 
 module.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 module.exports = Number.isNaN || function isNaN(a) {
 	return a !== a;
 };
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = function isPrimitive(value) {
 	return value === null || (typeof value !== 'function' && typeof value !== 'object');
 };
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = function mod(number, modulo) {
 	var remain = number % modulo;
 	return Math.floor(remain >= 0 ? remain : remain + modulo);
 };
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = function sign(number) {
 	return number >= 0 ? 1 : -1;
 };
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 var toStr = Object.prototype.toString;
@@ -885,7 +901,7 @@ module.exports = function ToPrimitive(input, PreferredType) {
 	return ES5internalSlots['[[DefaultValue]]'](input, PreferredType);
 };
 
-},{"./helpers/isPrimitive":19,"is-callable":24}],18:[function(require,module,exports){
+},{"./helpers/isPrimitive":20,"is-callable":25}],19:[function(require,module,exports){
 'use strict';
 
 var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
@@ -961,9 +977,9 @@ module.exports = function ToPrimitive(input, PreferredType) {
 	return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
 };
 
-},{"./helpers/isPrimitive":19,"is-callable":24,"is-date-object":25,"is-symbol":27}],19:[function(require,module,exports){
-module.exports=require(14)
-},{}],20:[function(require,module,exports){
+},{"./helpers/isPrimitive":20,"is-callable":25,"is-date-object":26,"is-symbol":28}],20:[function(require,module,exports){
+module.exports=require(15)
+},{}],21:[function(require,module,exports){
 
 var hasOwn = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
@@ -987,7 +1003,7 @@ module.exports = function forEach (obj, fn, ctx) {
 };
 
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
 var slice = Array.prototype.slice;
 var toStr = Object.prototype.toString;
@@ -1037,17 +1053,17 @@ module.exports = function bind(that) {
     return bound;
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var implementation = require('./implementation');
 
 module.exports = Function.prototype.bind || implementation;
 
-},{"./implementation":21}],23:[function(require,module,exports){
+},{"./implementation":22}],24:[function(require,module,exports){
 var bind = require('function-bind');
 
 module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 
-},{"function-bind":22}],24:[function(require,module,exports){
+},{"function-bind":23}],25:[function(require,module,exports){
 'use strict';
 
 var fnToStr = Function.prototype.toString;
@@ -1088,7 +1104,7 @@ module.exports = function isCallable(value) {
 	return strClass === fnClass || strClass === genClass;
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var getDay = Date.prototype.getDay;
@@ -1110,7 +1126,7 @@ module.exports = function isDateObject(value) {
 	return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
 };
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 'use strict';
 
 var has = require('has');
@@ -1151,7 +1167,7 @@ module.exports = function isRegex(value) {
 	return tryRegexExecCall(value);
 };
 
-},{"has":23}],27:[function(require,module,exports){
+},{"has":24}],28:[function(require,module,exports){
 'use strict';
 
 var toStr = Object.prototype.toString;
@@ -1180,7 +1196,7 @@ if (hasSymbols) {
 	};
 }
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 var ES = require('es-abstract/es7');
@@ -1199,7 +1215,7 @@ module.exports = function values(O) {
 	return vals;
 };
 
-},{"es-abstract/es7":10,"function-bind":22,"has":23}],29:[function(require,module,exports){
+},{"es-abstract/es7":11,"function-bind":23,"has":24}],30:[function(require,module,exports){
 'use strict';
 
 var define = require('define-properties');
@@ -1218,7 +1234,7 @@ define(polyfill, {
 
 module.exports = polyfill;
 
-},{"./implementation":28,"./polyfill":30,"./shim":31,"define-properties":5}],30:[function(require,module,exports){
+},{"./implementation":29,"./polyfill":31,"./shim":32,"define-properties":6}],31:[function(require,module,exports){
 'use strict';
 
 var implementation = require('./implementation');
@@ -1227,7 +1243,7 @@ module.exports = function getPolyfill() {
 	return typeof Object.values === 'function' ? Object.values : implementation;
 };
 
-},{"./implementation":28}],31:[function(require,module,exports){
+},{"./implementation":29}],32:[function(require,module,exports){
 'use strict';
 
 var getPolyfill = require('./polyfill');
@@ -1243,4 +1259,4 @@ module.exports = function shimValues() {
 	return polyfill;
 };
 
-},{"./polyfill":30,"define-properties":5}]},{},[4])
+},{"./polyfill":31,"define-properties":6}]},{},[5])
