@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const values = require('object.values');  //  shim Object.values
 const book = require('./allBooks/books.json');  //  book with valid contents
 //  book with invalid content
