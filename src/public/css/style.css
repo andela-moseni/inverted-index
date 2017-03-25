@@ -5,6 +5,18 @@ body {
   font-size: 15px;
 }
 
+a:link {
+  color: white;
+}
+
+a:link:visited {
+  color: white;
+}
+
+a:hover {
+    color: whitesmoke;
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -28,12 +40,10 @@ h2 {
 #display {
   color: black;
   font-weight: bold;
-  /*padding-left: 10px;*/
 }
 
 #choice {
   padding-top: 60px;
-  /*padding-right: 100px;*/
 }
 
 #main{
@@ -51,7 +61,6 @@ h2 {
 .navbar {
   background:#19647E;
   font-family: lobster;
-
 }
 
 .btn-file input[type=file] {
@@ -81,7 +90,6 @@ h2 {
   background-color: red;;
 }
 
-
 .content {
   font-size: 15px;
 }
@@ -97,18 +105,17 @@ footer {
   background-color: #19647E;
   position: fixed;
   bottom: 0;
+  font-size: 20px;
   padding-top: 10px;
 }
 
 table {
   border-spacing: 0;
   border-collapse: separate;
-  /*float: right;*/
   margin: 0 auto;
 }
 
 .table {
   width: 70%;
   max-width: 70%;
-  /*float: right;*/
 }
