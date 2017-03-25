@@ -107,6 +107,7 @@ indexed.controller('fileController', ($scope, toastr) => {
       toastr.error('Enter a valid search term', 'Invalid search term');
       $scope.showResultTable = false;
       $scope.tableTitle = false;
+      $scope.showTable = false;
       return;
     } else if (query === '' || query === undefined) {
       toastr.error('Enter word(s) to search!', 'No Search Parameter');
