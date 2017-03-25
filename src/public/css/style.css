@@ -1,0 +1,101 @@
+body {
+  padding-top: 70px;
+  background: #fffff0;
+  font-family: prociono;
+  font-size: 15px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-success {
+  background-color: #3CBBB1;
+}
+
+h3 {
+  font-family: Prociono;
+}
+
+h2 {
+  text-align: center; 
+}
+
+#overview {
+  font-size: 20px;
+}
+
+#display {
+  color: black;
+  font-weight: : bold;
+  /*padding-left: 10px;*/
+}
+
+#choice {
+  padding-top: 60px;
+  /*padding-right: 100px;*/
+}
+
+#main{
+  color: white;
+  font-size: 45px;
+}
+
+#mains{
+  color: black;
+  font-size: 35px;
+  text-align: center;
+  font-family: lobster;
+}
+
+.navbar {
+  background:#19647E;
+  font-family: lobster;
+
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
+}
+
+.btn-success:hover {
+  background-color: #19647E;;
+}
+
+.btn-success:focus {
+  background-color: #19647E;;
+}
+
+.btn-success:active {
+  background-color: red;;
+}
+
+
+.content {
+  font-size: 15px;
+}
+
+footer {
+  display: block;
+  height: 50px;
+  width: 100%;
+  font-size: 15px;
+  color: white;
+  text-align: left;
+  font-family: lobster;
+  background-color: #19647E;
+  position: fixed;
+  bottom: 0;
+  padding-top: 10px;
+}
