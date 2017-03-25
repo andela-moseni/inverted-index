@@ -39,8 +39,11 @@
     "karma-phantomjs-launcher": "^1.0.4"
   },
   "dependencies": {
+    "browser-sync": "^2.18.8",
     "express": "^4.15.2",
     "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-rename": "^1.2.2",
     "jasmine": "^2.5.3",
     "karma": "^1.5.0",
     "karma-coverage": "^1.1.1",

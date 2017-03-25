@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
+
 /**
  * inverted index class
  * @class
 **/
-class InvertedIndex {
+class InvertedIndex { //  eslint-disable-line
   /**
   * class constructor
   * @constructor
@@ -10,7 +12,7 @@ class InvertedIndex {
   constructor() {
     this.fileIndices = {};
     this.searchIndices = {};
-  } 
+  }
   /**
    * Set Index - Sets the indices of all indexed files
    * @param {String} filename - Name of the indexed file
@@ -26,17 +28,17 @@ class InvertedIndex {
    * @param {Object} file is an array of json objects
    * @return {Boolean} True if a json file is valid and False otherwise
   **/
-  validateFile(file) {
+  validateFile(file) { // eslint-disable-line
     if (typeof file !== 'object' || file.length === 0) {
       return false;
     }
-      for (let i = 0; i < file.length; i++) {
-        let item = file[i];
-        if (!(item.hasOwnProperty('title') && item.hasOwnProperty('text'))) {
-          return false;
-        }
+    for (let i = 0; i < file.length; i += 1) {
+      const item = file[i];
+      if (!(item.hasOwnProperty('title') && item.hasOwnProperty('text'))) { // eslint-disable-line
+        return false;
       }
-     return true;
+    }
+    return true;
   }
   /**
    * Tokenize
@@ -44,16 +46,18 @@ class InvertedIndex {
    * @param {String} text - string of texts
    * @return {Array} An array of refined splitted texts
   **/
-  tokenize(text) { 
-    const remove = /[^\w\s]/g;  
-    return text.replace(remove, " ").toLowerCase().split(" ").sort().filter(item => Boolean(item));
+  tokenize(text) {  //eslint-disable-line
+    const remove = /[^\w\s]/g;
+    return text.replace(remove, ' ').toLowerCase().split(' ')
+    .sort()
+    .filter(item => Boolean(item));
   }
-  createIndex(fileName, fileContent) {
+  createIndex(fileName, fileContent) {  //eslint-disable-line
     const indices = {};
     if (this.validateFile(fileContent)) {
       fileContent.forEach((doc, docIndex) => {
         const newString = `${doc.title} ${doc.text}`;
-        let tokenArray = this.tokenize(newString);
+        const tokenArray = this.tokenize(newString);
         tokenArray.forEach((token) => {
           if (token in indices) {
             if (indices[token].indexOf(docIndex) === -1) {
@@ -76,8 +80,8 @@ class InvertedIndex {
    * @return {Object} An object of each word and their indices in a sorted way
   **/
   getIndex(filename) {
-    let newObj = {};
-    let tokens = Object.keys(this.fileIndices[filename]).sort();
+    const newObj = {};
+    const tokens = Object.keys(this.fileIndices[filename]).sort();
     tokens.forEach((token) => {
       newObj[token] = this.fileIndices[filename][token];
     });
@@ -86,13 +90,14 @@ class InvertedIndex {
    /**
    * Search Index
    * It searches through file(s)
+   * @param {String} searchTerm - words to search
    * @param {String} filename - Filename of the index to get
    * @return {Object} Displays table of search result
   **/
   searchIndex(searchTerm, filename) {
     let searchResult = {};
     this.searchIndices = {};
-    if(typeof searchTerm !== 'string' || typeof searchTerm === undefined) {
+    if (typeof searchTerm !== 'string' || typeof searchTerm === 'undefined') {
       return false;
     }
     searchTerm = this.tokenize(searchTerm);
@@ -102,19 +107,19 @@ class InvertedIndex {
       // Search single file with filename
       index = this.fileIndices[filename];
       searchTerm.forEach((term) => {
-        if(index[term]){
+        if (index[term]) {
           searchResult[term] = index[term];
         }
       });
       this.searchIndices[filename] = searchResult;
       return this.searchIndices;
-    } 
+    }
     // Search all files
     Object.keys(this.fileIndices).forEach((file) => {
       searchResult = {};
       index = this.fileIndices[file];
       searchTerm.forEach((term) => {
-        if(index[term]){
+        if (index[term]) {
           searchResult[term] = index[term];
         }
       });

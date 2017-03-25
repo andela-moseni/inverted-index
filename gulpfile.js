@@ -4,14 +4,14 @@ const browserSync = require('browser-sync').create();
 const browserify = require('gulp-browserify');
 const rename = require('gulp-rename');
 
-gulp.task('browserSync', function() {
-    browserSync.init({
-       server: {
-            baseDir: "src",
-            index: 'index.html',
-            port: 3000
-        }
-    });
+gulp.task('browserSync', () => {
+  browserSync.init({
+    server: {
+      baseDir: 'src',
+      index: 'index.html',
+      port: 3000
+    }
+  });
 });
 
 gulp.task('scripts', () => {
@@ -22,9 +22,9 @@ gulp.task('scripts', () => {
 });
 
 gulp.task('default', ['browserSync'], () => {
-    gulp.watch('src/public/css/*.css', browserSync.reload);
-    gulp.watch('src/public/js/*.js', browserSync.reload);
-    gulp.watch('src/*.html', browserSync.reload);
-    gulp.watch('src/*.js', browserSync.reload);
-    gulp.watch('jasmine/spec/*', browserSync.reload);
+  gulp.watch('src/public/css/*.css', browserSync.reload);
+  gulp.watch('src/public/js/*.js', browserSync.reload);
+  gulp.watch('src/*.html', browserSync.reload);
+  gulp.watch('src/*.js', browserSync.reload);
+  gulp.watch('jasmine/spec/*', browserSync.reload);
 });
