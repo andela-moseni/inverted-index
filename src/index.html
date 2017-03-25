@@ -83,14 +83,14 @@
     </div>
     <!--inverted-index table -->
     <div ng-repeat="(name, index) in indexed">
-      <table class="table table-striped" ng-show="showTable">
+      <table class="table table-striped table-responsive table-hover" ng-show="showTable">
         <div class="row" ng-show="tableTitle">
           <div class="col-md-12">
             <h2><span class="glyphicon glyphicon-th-large"></span>&nbsp;Inverted Index Table for {{ name }}</h2><br>
           </div>
         </div>
         <thead>
-          <tr>
+          <tr class="success">
             <th>Tokens</th>
             <th ng-repeat="fileTitle in fileTitles[name]">{{ fileTitle }}</th>
           </tr>
@@ -106,14 +106,14 @@
     </div>
     <!--search result table-->
     <div class="row" ng-show="showResultTable" ng-repeat="(name, index) in mySearch">
-      <table class="table table-striped">
+      <table class="table table-striped table-responsive table-hover">
         <div class="row">
           <div class="col-md-12">
             <h2><span class="glyphicon glyphicon-th-large"></span>&nbsp;Search result for "{{ query }}" in {{ name }}</h2><br>
           </div>
         </div>
         <thead>
-          <tr>
+          <tr class="success">
             <th>Tokens</th>
             <th ng-repeat="fileTitle in fileTitles[name]">{{ fileTitle }}</th>
           </tr>

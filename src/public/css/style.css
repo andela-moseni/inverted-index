@@ -99,3 +99,16 @@ footer {
   bottom: 0;
   padding-top: 10px;
 }
+
+table {
+  border-spacing: 0;
+  border-collapse: separate;
+  /*float: right;*/
+  margin: 0 auto;
+}
+
+.table {
+  width: 70%;
+  max-width: 70%;
+  /*float: right;*/
+}
