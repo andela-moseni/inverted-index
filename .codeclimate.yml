@@ -1,20 +1,32 @@
 engines:
-  eslint:
-    enabled: true
-  duplication:
-    enabled: true
+  duplications:
+    enabled: false
     config:
       languages:
-      - javascript
+        #mass_threshold: 30
+        - javascript
+  eslint:
+    enabled: true
+    # ... CONFIG CONTENT ...
     checks:
-      Similar code:
-      enabled: false
+      comma-dangle:
+        enabled: false
+  fixme:
+    enabled: true
 ratings:
   paths:
-  - "**.js"
+    - "src/js/app.js"
+    - "src/inverted-index.js"
+    - "jasmine/specs/*"
+languages:
+  JavaScript: true
 exclude_paths:
-- 
-env:
-  browser: true
-  es6: true
-  node: true
+- "src/public/css"
+- "src/public/images"
+- .gitignore
+- .eslintignore
+- .travis.yml
+- .eslintrc.json
+- "jasmine/lib"
+- "jasmine/testfiles"
+- "gulpfile.js"
