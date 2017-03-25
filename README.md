@@ -1,6 +1,3 @@
-[![Coverage Status](https://coveralls.io/repos/github/andela-moseni/inverted-index/badge.svg?branch=development)](https://coveralls.io/github/andela-moseni/inverted-index?branch=development)
-[![Build Status](https://travis-ci.org/andela-moseni/inverted-index.svg?branch=development)](https://travis-ci.org/andela-moseni/inverted-index)
-
 # Inverted Index
 ## Introduction
 An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file). It use the elasticsearch method, which is designed to allow very fast full-text searches.
