@@ -47,7 +47,7 @@ class InvertedIndex { //  eslint-disable-line
    * @return {Array} An array of refined splitted texts
   **/
   tokenize(text) {  //eslint-disable-line
-    const remove = /[^\w\s]/g;
+    const remove = /[^'^\w\s]/g;
     return text.replace(remove, ' ').toLowerCase().split(' ')
     .sort()
     .filter(item => Boolean(item));
