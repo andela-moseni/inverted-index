@@ -29,4 +29,4 @@ exclude_paths:
 - .eslintrc.json
 - "jasmine/lib"
 - "jasmine/testfiles"
-- "gulpfile.js"
+- "server.js"
