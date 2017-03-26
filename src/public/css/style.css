@@ -4,19 +4,36 @@ body {
   font-family: prociono;
   font-size: 15px;
 }
+  /*<style>*
+a:link    {color:green; background-color:transparent; text-decoration:none}
+a:visited {color:pink; background-color:transparent; text-decoration:none}
+a:hover   {color:red; background-color:transparent; text-decoration:underline}
+a:active  {color:yellow; background-color:transparent; text-decoration:underline}*/
+/*</style>*/
 
 a:link {
   color: white;
+  background-color: transparent;
+  text-decoration: none;
 }
 
 a:link:visited {
   color: white;
+  background-color:transparent;
+  text-decoration:none;
 }
 
 a:hover {
-    color: whitesmoke;
+    color: #3CBBB1;
+    background-color:transparent;
+    text-decoration:underline;
 }
 
+a:active {
+  color:#3CBBB1; 
+  background-color:transparent; 
+  text-decoration:underline;
+}
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -118,4 +135,8 @@ table {
 .table {
   width: 70%;
   max-width: 70%;
+}
+
+#styles {
+  color: white;
 }
