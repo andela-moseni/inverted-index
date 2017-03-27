@@ -4,8 +4,7 @@
   "description": "An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file).",
   "main": "index.js",
   "scripts": {
-    "test": "karma start --single-run",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,34 +22,5 @@
   "bugs": {
     "url": "https://github.com/andela-moseni/inverted-index/issues"
   },
-  "homepage": "https://github.com/andela-moseni/inverted-index#readme",
-  "devDependencies": {
-    "eslint": "^3.18.0",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0",
-    "gulp-uglify": "^2.1.0",
-    "gulp-util": "^3.0.8",
-    "jasmine": "^2.5.3",
-    "jasmine-core": "^2.5.2",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-firefox-launcher": "^1.0.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4"
-  },
-  "dependencies": {
-    "browser-sync": "^2.18.8",
-    "express": "^4.15.2",
-    "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-rename": "^1.2.2",
-    "jasmine": "^2.5.3",
-    "karma": "^1.5.0",
-    "karma-coverage": "^1.1.1",
-    "karma-coveralls": "^1.1.2",
-    "karma-spec-reporter": "0.0.30",
-    "karma-verbose-reporter": "0.0.6",
-    "object.values": "^1.0.4",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/andela-moseni/inverted-index#readme"
 }
