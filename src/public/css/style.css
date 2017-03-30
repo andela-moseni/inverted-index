@@ -1,39 +1,56 @@
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.2;
+    color: #fff;
+    background: #000 url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+  
+  
+  position:absolute;
+  top:0;left:0;
+  z-index:1;
+}
+.jumbotron {position:relative;padding:50px;}
+.jumbotron .container {z-index:2;
+ position:relative;
+  z-index:2;
+}
+
+
 body {
-  padding-top: 70px;
   background: #fffff0;
   font-family: prociono;
   font-size: 15px;
 }
-  /*<style>*
-a:link    {color:green; background-color:transparent; text-decoration:none}
-a:visited {color:pink; background-color:transparent; text-decoration:none}
-a:hover   {color:red; background-color:transparent; text-decoration:underline}
-a:active  {color:yellow; background-color:transparent; text-decoration:underline}*/
-/*</style>*/
 
-a:link {
+a {
   color: white;
   background-color: transparent;
   text-decoration: none;
 }
 
-a:link:visited {
+a:visited {
   color: white;
-  background-color:transparent;
-  text-decoration:none;
+  background-color: transparent;
+  text-decoration: none;
 }
 
 a:hover {
     color: #3CBBB1;
-    background-color:transparent;
-    text-decoration:underline;
+    background-color: transparent;
+    text-decoration: none;
 }
 
 a:active {
   color:#3CBBB1; 
-  background-color:transparent; 
-  text-decoration:underline;
+  background-color: transparent; 
+  text-decoration: none;
 }
+
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -42,37 +59,31 @@ a:active {
   background-color: #3CBBB1;
 }
 
-h3 {
-  font-family: Prociono;
+.btn-success:hover {
+  background-color: #19647E;;
+}
+
+.btn-success:active {
+  background-color: gray;
+}
+
+.btn-success:focus {
+  background-color: #19647E;;
 }
 
 h2 {
   text-align: center; 
+  color: #19647E;
 }
 
 #overview {
-  font-size: 20px;
+   text-align: center; 
+   font-weight: bold;
 }
 
 #display {
-  color: black;
-  font-weight: bold;
-}
-
-#choice {
-  padding-top: 60px;
-}
-
-#main{
   color: white;
-  font-size: 45px;
-}
-
-#mains{
-  color: black;
-  font-size: 35px;
-  text-align: center;
-  font-family: lobster;
+  font-weight: bold;
 }
 
 .navbar {
@@ -80,31 +91,37 @@ h2 {
   font-family: lobster;
 }
 
+.navbar-inverse {
+    border-color: white;
+}
+
+.white {
+  color: white;
+  font-size: 35px;
+}
+
+#aboutnav {
+  display: inline-block; 
+  position: absolute; 
+  right: 10px;
+  color: white;
+  font-size: 35px;
+}
+
+.title {
+  display: inline-block; 
+  margin-left: 20px;
+}
+
 .btn-file input[type=file] {
     position: absolute;
     top: 0;
     right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
     filter: alpha(opacity=0);
     opacity: 0;
     outline: none;
     cursor: inherit;
-    display: block;
-}
-
-.btn-success:hover {
-  background-color: #19647E;;
-}
-
-.btn-success:focus {
-  background-color: #19647E;;
-}
-
-.btn-success:active {
-  background-color: red;;
+    display: inline;
 }
 
 .content {
@@ -118,11 +135,9 @@ footer {
   font-size: 15px;
   color: white;
   text-align: left;
-  font-family: lobster;
   background-color: #19647E;
   position: fixed;
   bottom: 0;
-  font-size: 20px;
   padding-top: 10px;
 }
 
@@ -137,6 +152,19 @@ table {
   max-width: 70%;
 }
 
-#styles {
-  color: white;
+.table>tbody>tr.success>td, .table>tbody>tr.success>th, .table>tbody>tr>td.success, .table>tbody>tr>th.success, .table>tfoot>tr.success>td, .table>tfoot>tr.success>th, .table>tfoot>tr>td.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>thead>tr.success>th, .table>thead>tr>td.success, .table>thead>tr>th.success {
+    background-color: #19647E;
+    color: white;
+}
+
+#resultTable {
+  background-color: white;
+}
+
+.jumbotron {
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid white;
+  height: 180px;
+  background-color: #19647E;
 }
