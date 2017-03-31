@@ -32,6 +32,7 @@ a:active {
     position: relative;
     overflow: hidden;
 }
+
 .btn-info {
   background-color: #3CBBB1;
 }
@@ -90,14 +91,14 @@ h2 {
 }
 
 .btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    cursor: inherit;
-    display: inline;
+  position: absolute;
+  top: 0;
+  right: 0;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  cursor: inherit;
+  display: inline;
 }
 
 .content {
@@ -136,12 +137,18 @@ table {
   max-width: 90%;
 }
 
-.table>tbody>tr.success>td, .table>tbody>tr.success>th, .table>tbody>tr>td.success, .table>tbody>tr>th.success, .table>tfoot>tr.success>td, .table>tfoot>tr.success>th, .table>tfoot>tr>td.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>thead>tr.success>th, .table>thead>tr>td.success, .table>thead>tr>th.success {
-    background-color: #19647E;
-    color: white;
-    font-size: 22px;
-    text-align: center;
+.table>tbody>tr.success>td, .table>tbody>tr.success>th, 
+.table>tbody>tr>td.success, .table>tbody>tr>th.success, 
+.table>tfoot>tr.success>td, .table>tfoot>tr.success>th, 
+.table>tfoot>tr>td.success, .table>tfoot>tr>th.success, 
+.table>thead>tr.success>td, .table>thead>tr.success>th, 
+.table>thead>tr>td.success, .table>thead>tr>th.success {
+  background-color: #19647E;
+  color: white;
+  font-size: 22px;
+  text-align: center;
 }
+
 td {
   font-size: 19px;
   text-align: center;
@@ -161,21 +168,26 @@ td {
 }
 
 .jumbotron-billboard .img {
-    margin-bottom: 0px;
-    color: #fff;
-    background: #000 url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") center center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-  
-  
+  margin-bottom: 0px;
+  color: #fff;
+  background: #000 
+  url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") 
+  center center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
   position:absolute;
   top:0;left:0;
   z-index:1;
 }
-.jumbotron {position:relative;padding:50px;}
-.jumbotron .container {z-index:2;
- position:relative;
+
+.jumbotron {
+  position:relative;padding:50px;
+}
+
+.jumbotron .container {
+  z-index:2;
+  position:relative;
   z-index:2;
 }
