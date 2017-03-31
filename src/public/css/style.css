@@ -1,25 +1,3 @@
-.jumbotron-billboard .img {
-    margin-bottom: 0px;
-    opacity: 0.2;
-    color: #fff;
-    background: #000 url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") center center;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-  
-  
-  position:absolute;
-  top:0;left:0;
-  z-index:1;
-}
-.jumbotron {position:relative;padding:50px;}
-.jumbotron .container {z-index:2;
- position:relative;
-  z-index:2;
-}
-
-
 body {
   background: #fffff0;
   font-family: prociono;
@@ -128,6 +106,14 @@ h2 {
   font-size: 15px;
 }
 
+#format {
+  color: #19647E;
+}
+
+#jumb {
+  height: 300px;
+}
+
 footer {
   display: block;
   height: 50px;
@@ -148,13 +134,19 @@ table {
 }
 
 .table {
-  width: 70%;
-  max-width: 70%;
+  width: 80%;
+  max-width: 90%;
 }
 
 .table>tbody>tr.success>td, .table>tbody>tr.success>th, .table>tbody>tr>td.success, .table>tbody>tr>th.success, .table>tfoot>tr.success>td, .table>tfoot>tr.success>th, .table>tfoot>tr>td.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>thead>tr.success>th, .table>thead>tr>td.success, .table>thead>tr>th.success {
     background-color: #19647E;
     color: white;
+    font-size: 22px;
+    text-align: center;
+}
+td {
+  font-size: 19px;
+  text-align: center;
 }
 
 #resultTable {
@@ -167,4 +159,25 @@ table {
   border: 1px solid white;
   height: 180px;
   background-color: #19647E;
+}
+
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    opacity: 0.2;
+    color: #fff;
+    background: #000 url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") center center;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+  
+  
+  position:absolute;
+  top:0;left:0;
+  z-index:1;
+}
+.jumbotron {position:relative;padding:50px;}
+.jumbotron .container {z-index:2;
+ position:relative;
+  z-index:2;
 }
