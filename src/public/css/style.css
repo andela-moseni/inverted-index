@@ -28,24 +28,23 @@ a:active {
   text-decoration: none;
 }
 
-
 .btn-file {
     position: relative;
     overflow: hidden;
 }
-.btn-success {
+.btn-info {
   background-color: #3CBBB1;
 }
 
-.btn-success:hover {
+.btn-info:hover {
   background-color: #19647E;;
 }
 
-.btn-success:active {
+.btn-info:active {
   background-color: gray;
 }
 
-.btn-success:focus {
+.btn-info:focus {
   background-color: #19647E;;
 }
 
@@ -56,7 +55,6 @@ h2 {
 
 #overview {
    text-align: center; 
-   font-weight: bold;
 }
 
 #display {
@@ -164,7 +162,6 @@ td {
 
 .jumbotron-billboard .img {
     margin-bottom: 0px;
-    opacity: 0.2;
     color: #fff;
     background: #000 url("https://bootstrapcreative.com/wp-bc/wp-content/uploads/2017/03/learning-story.png") center center;
     width: 100%;
