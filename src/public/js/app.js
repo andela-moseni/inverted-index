@@ -30,7 +30,7 @@ indexed.controller('fileController', ($scope, toastr) => {
           $scope.$apply(() => {
             try {
               const fileContent = JSON.parse(es.target.result);
-              const validFile = invertedIndex.validateFile(fileContent);
+              const validFile = InvertedIndex.validateFile(fileContent);
               const fileExists = $scope.fileNames.indexOf(file.name) !== -1;
               if (fileExists) {
                 toastr.warning('File already exists!');
