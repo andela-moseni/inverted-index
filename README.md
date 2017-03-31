@@ -2,6 +2,7 @@
 # Inverted Index
 ## Introduction
 An Inverted Index is an Index Data Structure storing a mapping from content to location (i.e. a mapping of words or numbers to it's location in a database file). It use the elasticsearch method, which is designed to allow very fast full-text searches.
+The link to the hosted app [Meek-Inverted Index](https://meek-inverted-index.herokuapp.com)
 
 ## Features
 - Upload file(s)
@@ -27,8 +28,7 @@ When the app has started:
 * Click on `Upload File` to upload valid JSON file(s)
 * Upon successful upload, click on the `Create Index` button 
 * Scroll down the page to see the created Index displayed in a tabular format
-* Choose a file to search through a file or `All files` to search through all files, input search words and click on the `Search` button
-* Scroll down to see the search result
+* Choose a file to search through a file or `All files` to search through all files, input search words and results will be displayed
 
 ### Technology stack
 * Node JS
@@ -39,7 +39,7 @@ When the app has started:
 * Jasmine
 
 ### Limitations of the project
-The application can only upload JSON files in a specific format. 
+The application can only upload JSON files in this [format](https://gist.github.com/q-ode/72019451b98f079a8d737eb7a412bf14)
 
 ### Contributing to the project
 * Fork this repositry to your account
@@ -47,10 +47,13 @@ The application can only upload JSON files in a specific format.
 * Create your feature branch - `git checkout -b new-feature`
 * Commit your changes - `git commit -m "did something"`
 * Push to the remote branch - `git push origin new-feature`
-* Open a pull request.
+* Open a pull request
 
 ### Troubleshooting & FAQ
 - [inverted-index issues page](https://github.com/andela-moseni/inverted-index/issues)
+
+### Resources
+- For further research on **Inverted index**, click [here](https://www.elastic.co/guide/en/elasticsearch/guide/current/inverted-index.html)
 
 ### License
   *  **MIT**
