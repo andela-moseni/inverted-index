@@ -151,6 +151,7 @@ td {
 
 #resultTable {
   background-color: white;
+  overflow-x: auto;
 }
 
 .jumbotron {
