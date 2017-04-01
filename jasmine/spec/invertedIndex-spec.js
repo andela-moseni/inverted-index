@@ -175,7 +175,6 @@ describe('Generate Index', () => {
           barbie: [ 1 ] 
         }
       }
-
       let search = {};
       search = invertedIndex.searchIndex('Barbie loves cartoons but she\'s scared of an unusual wizard, alice fall\'s',
       'All files');
