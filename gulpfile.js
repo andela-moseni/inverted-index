@@ -15,7 +15,7 @@ gulp.task('browserSync', () => {
 });
 
 gulp.task('scripts', () => {
-  gulp.src('jasmine/spec/invertedIndex-spec.js')
+  gulp.src('jasmine/spec/InvertedIndexSpec.js')
     .pipe(browserify())
     .pipe(rename('bundle.js'))
     .pipe(gulp.dest('jasmine/testfiles'));

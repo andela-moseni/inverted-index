@@ -16,7 +16,7 @@ engines:
 ratings:
   paths:
     - "src/js/app.js"
-    - "src/inverted-index.js"
+    - "src/InvertedIndex.js"
     - "jasmine/specs/*"
 languages:
   JavaScript: true

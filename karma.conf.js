@@ -15,7 +15,7 @@ module.exports = (config) => {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/inverted-index.js',
+      'src/InvertedIndex.js',
       'jasmine/testfiles/bundle.js'
     ],
 
@@ -29,7 +29,7 @@ module.exports = (config) => {
     // available preprocessors:
     // https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      './src/inverted-index.js': ['coverage']
+      './src/InvertedIndex.js': ['coverage']
     },
 
 
