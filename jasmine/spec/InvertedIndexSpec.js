@@ -26,10 +26,6 @@ describe('Meek Inverted Index', () => {
       expect(InvertedIndex).toBeDefined();
     });
 
-    it('should have  defined instance', () => {
-      expect(meek).toBeDefined();
-    });
-
     it('can create instances of inverted index class', () => {
       expect(meek instanceof InvertedIndex).toBeTruthy();
     });
@@ -89,8 +85,8 @@ describe('Meek Inverted Index', () => {
        expect(InvertedIndex.validateFile(emptyFile)).toBeFalsy();
      });
 
-    it('should return false if file is a JSON file but not' +
-    'an array of an array',
+    it(`should return false if file is a JSON file but not
+    an array of an array`,
      () => {
        expect(InvertedIndex.validateFile(notValid)).toBeFalsy();
      });
