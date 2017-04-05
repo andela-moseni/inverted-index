@@ -33,7 +33,7 @@ class InvertedIndex {
       const item = file[i];
       if (!(Object.prototype.hasOwnProperty.call(item, 'title') &&
       (Object.prototype.hasOwnProperty.call(item, 'text')) &&
-      item.title.length > 0 && item.text.length > 0)) {
+      (item.title.length > 0) && (item.text.length > 0))) {
         return false;
       }
     }
@@ -46,7 +46,7 @@ class InvertedIndex {
     * @return {Array} An array of refined split texts
   **/
   static tokenize(text) {
-    const remove = /[^\w'\s]/g;
+    const remove = /[^\w'\s]|('\s)/g;
     const lowerCase = text.replace(remove, ' ').toLowerCase();
     const divideText = lowerCase.split(' ');
     const sortedText = divideText.sort();

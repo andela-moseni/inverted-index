@@ -113,7 +113,7 @@ describe('Meek Inverted Index', () => {
     });
 
     it('should strip out special characters', () => {
-      let words = "I love Programming! @ gmail ) Mercy's  * &^%$#";
+      let words = "I love Programming! @ gmail ) Mercy's  ' * &^%$#";
       const expectedTokens = ['gmail', 'i', 'love', 'mercy\'s', 'programming'];
       words = InvertedIndex.tokenize(words);
       expect(expectedTokens).toEqual(words);

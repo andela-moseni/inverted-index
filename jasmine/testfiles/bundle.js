@@ -16,10 +16,15 @@ module.exports=[
 ]
 
 },{}],2:[function(require,module,exports){
-module.exports=[
-{
-  
-}
+module.exports=[   
+    {
+      "title": "Testing",
+      "text": "meek and "
+    },
+    {
+      "title": "",
+      "text": ""
+    }
 ]
 },{}],3:[function(require,module,exports){
 module.exports=[
@@ -193,7 +198,7 @@ describe('Meek Inverted Index', () => {
     });
 
     it('should strip out special characters', () => {
-      let words = "I love Programming! @ gmail ) Mercy's  * &^%$#";
+      let words = "I love Programming! @ gmail ) Mercy's  ' * &^%$#";
       const expectedTokens = ['gmail', 'i', 'love', 'mercy\'s', 'programming'];
       words = InvertedIndex.tokenize(words);
       expect(expectedTokens).toEqual(words);
