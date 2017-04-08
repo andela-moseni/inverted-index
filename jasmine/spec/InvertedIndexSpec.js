@@ -1,24 +1,24 @@
 //  book with valid contents
-const book = require('./allBooks/books.json');
-const secondBook = require('./allBooks/newBook.json');
+const books = require('./allBooks/books.json');
+const newBook = require('./allBooks/newBook.json');
 const myBook = require('./allBooks/myBook.json');
 //  book with invalid content
-const invalidFile = require('./allBooks/invalid.json');
+const invalidFile = require('./allBooks/invalidFile.json');
 //  empty book
 const empty = require('./allBooks/empty.json');
 // an array
-const invalid = require('./allBooks/in-valid.json');
+const invalid = require('./allBooks/invalid.json');
 // empty array
-const emptyFile = require('./allBooks/emptyArray.json');
+const emptyFile = require('./allBooks/emptyFile.json');
 // an invalid JSON file
-const notValid = require('./allBooks/notArrayOfArray.json');
+const notValid = require('./allBooks/notValid.json');
 
-const meek = new InvertedIndex();
+const invertedIndex = new InvertedIndex();
 
 describe('Meek Inverted Index', () => {
   beforeAll(() => {
-    meek.createIndex('book.json', book);
-    meek.createIndex('secondBook.json', secondBook);
+    invertedIndex.createIndex('books.json', books);
+    invertedIndex.createIndex('newBook.json', newBook);
   });
 
   describe('The InvertedIndex class', () => {
@@ -27,13 +27,13 @@ describe('Meek Inverted Index', () => {
     });
 
     it('can create instances of inverted index class', () => {
-      expect(meek instanceof InvertedIndex).toBeTruthy();
+      expect(invertedIndex instanceof InvertedIndex).toBeTruthy();
     });
   });
 
   describe('The InvertedIndex class', () => {
     it('should check that the class has a createIndex method', () => {
-      expect(typeof meek.createIndex).toBe('function');
+      expect(typeof invertedIndex.createIndex).toBe('function');
     });
 
     it('should check that the class has a validateFile method', () => {
@@ -45,21 +45,21 @@ describe('Meek Inverted Index', () => {
     });
 
     it('should check that the class has a getIndex method', () => {
-      expect(typeof meek.getIndex).toBe('function');
+      expect(typeof invertedIndex.getIndex).toBe('function');
     });
 
     it('should check that the class has a searchIndex method', () => {
-      expect(typeof meek.searchIndex).toBe('function');
+      expect(typeof invertedIndex.searchIndex).toBe('function');
     });
 
     it('should check that the class has a setIndex method', () => {
-      expect(typeof meek.setIndex).toBe('function');
+      expect(typeof invertedIndex.setIndex).toBe('function');
     });
   });
 
   describe('The validateFile method', () => {
     it('should return true if file has property "title" and "text" ', () => {
-      expect(InvertedIndex.validateFile(book)).toBeTruthy();
+      expect(InvertedIndex.validateFile(books)).toBeTruthy();
     });
 
     it('should return false if file does not have property "title" and "text"',
@@ -68,7 +68,7 @@ describe('Meek Inverted Index', () => {
      });
     it('should check that the contents of the file to be uploaded is valid',
     () => {
-      expect(InvertedIndex.validateFile(book)).toBeTruthy();
+      expect(InvertedIndex.validateFile(books)).toBeTruthy();
     });
 
     it('should return false for empty json files', () => {
@@ -95,12 +95,12 @@ describe('Meek Inverted Index', () => {
   describe('The createIndex method', () => {
     it('should return a response if index is created', () => {
       const response = 'Index created';
-      expect(meek.createIndex('myBook.json', myBook)).toEqual(response);
+      expect(invertedIndex.createIndex('myBook.json', myBook)).toEqual(response);
     });
 
     it('should return a msg if index is not created', () => {
       const msg = 'Index not created';
-      expect(meek.createIndex('notValid.json', notValid)).toEqual(msg);
+      expect(invertedIndex.createIndex('notValid.json', notValid)).toEqual(msg);
     });
   });
 
@@ -122,7 +122,7 @@ describe('Meek Inverted Index', () => {
 
   describe('The getIndex method', () => {
     it('should return an object', () => {
-      expect(typeof meek.getIndex('book.json')).toEqual('object');
+      expect(typeof invertedIndex.getIndex('books.json')).toEqual('object');
     });
 
     it(`should check that index maps the string to the correct objects in json
@@ -141,7 +141,7 @@ describe('Meek Inverted Index', () => {
         love: [0, 1],
         you: [0]
       };
-      const result = meek.getIndex('secondBook.json');
+      const result = invertedIndex.getIndex('newBook.json');
       expect(result).toEqual(expectedIndex);
     });
   });
@@ -151,7 +151,7 @@ describe('Meek Inverted Index', () => {
     result for a search`, () => {
       const texts = 'I love Barbie and Alice';
       const expectedResult = {
-        'secondBook.json':
+        'newBook.json':
         {
           and: [0, 1],
           barbie: [1],
@@ -159,13 +159,13 @@ describe('Meek Inverted Index', () => {
           love: [0, 1]
         }
       };
-      expect((meek.searchIndex(texts, 'secondBook.json')))
+      expect((invertedIndex.searchIndex(texts, 'newBook.json')))
       .toEqual(expectedResult);
     });
 
     it('should search through all files', () => {
       const result = {
-        'book.json':
+        'books.json':
         {
           alice: [0],
           an: [1],
@@ -177,7 +177,7 @@ describe('Meek Inverted Index', () => {
           unusual: [1],
           wizard: [1]
         },
-        'secondBook.json':
+        'newBook.json':
         {
           and: [0, 1],
           barbie: [1]
@@ -189,7 +189,7 @@ describe('Meek Inverted Index', () => {
           name: [0]
         }
       };
-      const search = meek.searchIndex(`Barbie loves cartoons but she's
+      const search = invertedIndex.searchIndex(`Barbie loves cartoons but she's
       scared of an unusual wizard, alice fall's and mercy's name`,
       'All files');
       expect(search).toEqual(result);
